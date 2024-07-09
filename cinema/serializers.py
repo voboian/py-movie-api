@@ -9,6 +9,10 @@ class MovieSerializer(serializers.ModelSerializer):
     description = serializers.CharField(required=False)
     duration = serializers.IntegerField(required=True)
 
+    class Meta:
+        model = Movie
+        fields = ['id', 'title', 'description', 'duration']
+
     def create(self, validated_data):
         return Movie.objects.create(**validated_data)
 
